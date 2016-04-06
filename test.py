@@ -1,12 +1,14 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
+import json
 
 GPIO.setmode(GPIO.BOARD)
 
 # init list with pin numbers
 
-pinList = [3, 5, 7, 11, 13, 15, 16, 18]
+with open("config.json") as data_file:
+    data = json.load(data_file)
 
 # loop through pins and set mode and state to 'low'
 GPIO.setup(pinList, GPIO.OUT)
