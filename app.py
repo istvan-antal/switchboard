@@ -15,10 +15,12 @@ def hello():
 @app.route('/switch/<index>/on')
 def turn_on(index):
     board.turn_on(int(index))
+    return "on"
 
 @app.route('/switch/<index>/off')
 def turn_off(index):
     board.turn_off(int(index))
+    return "off"
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
