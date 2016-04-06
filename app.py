@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 accountmgr = DictAccountBroker(
     accounts={
-        "user": {"secret": ";hi^897t7utf", "rights": ["manage"]}
+        "user": {"secret": "please randomly generate me", "rights": ["manage"]}
     })
 
 hmacmgr = HmacManager(accountmgr, app)
