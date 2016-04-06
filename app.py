@@ -12,5 +12,13 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
+@app.route('/switch/<index>/on')
+def turn_on(index):
+    board.turn_on(index)
+
+@app.route('/switch/<index>/off')
+def turn_off(index):
+    board.turn_off(index)
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
