@@ -8,14 +8,14 @@ import json
 with open("config.json") as data_file:
     board = SwitchBoard(json.load(data_file)['pins'])
 
+app = Flask(__name__)
+
 accountmgr = DictAccountBroker(
     accounts={
         "user": {"secret": ";hi^897t7utf", "rights": ["manage"]}
     })
 
 hmacmgr = HmacManager(accountmgr, app)
-
-app = Flask(__name__)
 
 @app.route("/")
 def home():
