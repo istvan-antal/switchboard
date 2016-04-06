@@ -10,7 +10,7 @@ class SwitchBoard:
         self.reset()
 
     def test_switch(self, index):
-        self.turn_off(index)
+        self.turn_on(index)
         time.sleep(1)
         self.turn_off(index)
 
