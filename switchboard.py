@@ -8,12 +8,20 @@ class SwitchBoard:
     def __init__(self, pinList):
         self._pinList = pinList
         self.reset()
-        
+
     def test_switch(self, index):
-        pinNumber = self._pinList[index]
-        GPIO.output(pinNumber, GPIO.LOW)
+        self.turn_off(index)
         time.sleep(1)
-        GPIO.output(pinNumber, GPIO.HIGH)
+        self.turn_off(index)
+
+    def turn_on(self, index):
+        GPIO.output(self._get_pin_number(index), GPIO.LOW)
+
+    def turn_off(self, index):
+        GPIO.output(self._get_pin_number(index), GPIO.HIGH)
+
+    def _get_pin_number(self, index):
+        return self._pinList[index]
 
     def reset(self):
         GPIO.setup(self._pinList, GPIO.OUT)
