@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BOARD)
 # init list with pin numbers
 
 with open("config.json") as data_file:
-    data = json.load(data_file)
+    pinList = json.load(data_file)['pins']
 
 # loop through pins and set mode and state to 'low'
 GPIO.setup(pinList, GPIO.OUT)
