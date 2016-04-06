@@ -18,3 +18,7 @@ https://www.youtube.com/watch?v=oaf_zQcrg7g
 https://www.raspberrypi.org/documentation/usage/gpio-plus-and-raspi2/
 
 http://i.stack.imgur.com/sVvsB.jpg
+
+This application will use BOARD numbering instead of BCM.
+
+http://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering
