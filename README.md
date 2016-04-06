@@ -1,5 +1,12 @@
 # Switchboard
 
+## Software requirements
+
+```bash
+sudo apt-get install python-dev
+sudo pip install Flask
+```
+
 ## Components
 
  * Raspberry Pie
