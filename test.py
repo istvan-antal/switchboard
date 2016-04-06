@@ -14,6 +14,10 @@ GPIO.output(pinList, GPIO.HIGH)
 
 GPIO.output(11, GPIO.LOW)
 
+time.sleep(1)
+
+GPIO.output(11, GPIO.HIGH)
+
 time.sleep(3)
 
 GPIO.cleanup()
