@@ -9,40 +9,14 @@ GPIO.setmode(GPIO.BOARD)
 pinList = [3, 5, 7, 11, 13, 15, 16, 18]
 
 # loop through pins and set mode and state to 'low'
+GPIO.setup(pinList, GPIO.OUT)
+GPIO.output(pinList, GPIO.HIGH)
 
-for i in pinList:
-    GPIO.setup(i, GPIO.OUT)
-    GPIO.output(i, GPIO.HIGH)
+GPIO.output(11, GPIO.LOW)
 
-# time to sleep between operations in the main loop
+time.sleep(3)
 
-SleepTimeL = 0.2
-
-# main loop
-
-try:
-  while True:
-
-    for i in pinList:
-        GPIO.output(i, GPIO.HIGH)
-        time.sleep(SleepTimeL);
-        GPIO.output(i, GPIO.LOW)
-
-    pinList.reverse()
-
-    for i in pinList:
-        GPIO.output(i, GPIO.HIGH)
-        time.sleep(SleepTimeL);
-        GPIO.output(i, GPIO.LOW)
-
-    pinList.reverse()
-
-# End program cleanly with keyboard
-except KeyboardInterrupt:
-  print "  Quit"
-
-  # Reset GPIO settings
-  GPIO.cleanup()
+GPIO.cleanup()
 
 # find more information on this script at
 # http://youtu.be/oaf_zQcrg7g
