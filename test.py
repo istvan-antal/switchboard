@@ -2,11 +2,11 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
 # init list with pin numbers
 
-pinList = [2, 3, 4, 17, 27, 22, 23, 24]
+pinList = [3, 5, 7, 11, 13, 15, 16, 18]
 
 # loop through pins and set mode and state to 'low'
 
