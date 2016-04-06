@@ -6,14 +6,13 @@ from switchboard import SwitchBoard
 import json
 
 with open("config.json") as data_file:
-    board = SwitchBoard(json.load(data_file)['pins'])
+    config = json.load(data_file)
 
+board = SwitchBoard(config['pins'])
 app = Flask(__name__)
 
 accountmgr = DictAccountBroker(
-    accounts={
-        "user": {"secret": "please randomly generate me", "rights": ["manage"]}
-    })
+    accounts=config['accounts'])
 
 hmacmgr = HmacManager(accountmgr, app)
 
