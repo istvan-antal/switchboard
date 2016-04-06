@@ -5,16 +5,21 @@ GPIO.setmode(GPIO.BOARD)
 
 class SwitchBoard:
     def __init__(self, pinList):
-        # loop through pins and set mode and state to 'low'
-        GPIO.setup(pinList, GPIO.OUT)
-        GPIO.output(pinList, GPIO.HIGH)
+        self._pinList = pinList
+        self.reset()
+        self.test_switch(6)
 
-        GPIO.output(11, GPIO.LOW)
+        GPIO.cleanup()
 
+    def test_switch(self, index):
+        pinNumber = self._pinList[index]
+        GPIO.output(pinNumber, GPIO.LOW)
         time.sleep(1)
-
-        GPIO.output(11, GPIO.HIGH)
+        GPIO.output(pinNumber, GPIO.HIGH)
 
         time.sleep(3)
 
-        GPIO.cleanup()
+    def reset(self):
+        # loop through pins and set mode and state to 'low'
+        GPIO.setup(self._pinList, GPIO.OUT)
+        GPIO.output(self._pinList, GPIO.HIGH)
