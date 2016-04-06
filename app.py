@@ -23,6 +23,3 @@ GPIO.output(11, GPIO.HIGH)
 time.sleep(3)
 
 GPIO.cleanup()
-
-# find more information on this script at
-# http://youtu.be/oaf_zQcrg7g
