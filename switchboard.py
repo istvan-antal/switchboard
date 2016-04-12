@@ -13,7 +13,7 @@ class SwitchBoard:
         for i in self._pinList:
             self.turn_on(i)
             time.sleep(1)
-            
+
         for i in reversed(self._pinList):
             self.turn_off(i)
             time.sleep(1)
@@ -22,6 +22,14 @@ class SwitchBoard:
         self.turn_on(index)
         time.sleep(1)
         self.turn_off(index)
+
+    def turn_all_on(self):
+        for i in self._pinList:
+            self.turn_on(i)
+
+    def turn_all_off(self):
+        for i in self._pinList:
+            self.turn_off(i)
 
     def turn_on(self, index):
         GPIO.output(self._get_pin_number(index), GPIO.LOW)

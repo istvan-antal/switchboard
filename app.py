@@ -44,5 +44,17 @@ def test_all():
     board.test_switches()
     return "testing"
 
+@app.route('/switches/on')
+@hmac_auth("manage")
+def on_all():
+    board.turn_all_on()
+    return "on"
+
+@app.route('/switches/off')
+@hmac_auth("manage")
+def off_all():
+    board.turn_all_off()
+    return "off"
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
