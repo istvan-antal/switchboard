@@ -27,6 +27,10 @@ https://www.raspberrypi.org/documentation/usage/gpio-plus-and-raspi2/
 
 http://i.stack.imgur.com/sVvsB.jpg
 
+http://pinout.xyz/pinout/ground
+
 This application will use BOARD numbering instead of BCM.
 
 http://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering
+
+Multimeter to test the connections: https://www.amazon.co.uk/gp/product/B00EYYJRC0/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1
