@@ -32,5 +32,17 @@ def turn_off(index):
     board.turn_off(int(index))
     return "off"
 
+@app.route('/switch/<index>/test')
+@hmac_auth("manage")
+def turn_on(index):
+    board.test_switch(int(index))
+    return "ok"
+
+@app.route('/switches/test')
+@hmac_auth("manage")
+def turn_on():
+    board.test_switches()
+    return "testing"
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

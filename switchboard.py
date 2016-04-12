@@ -9,6 +9,15 @@ class SwitchBoard:
         self._pinList = pinList
         self.reset()
 
+    def test_switches(self):
+        for i in self._pinList:
+            self.turn_on(i)
+            time.sleep(1)
+            
+        for i in reversed(self._pinList):
+            self.turn_off(i)
+            time.sleep(1)
+
     def test_switch(self, index):
         self.turn_on(index)
         time.sleep(1)
