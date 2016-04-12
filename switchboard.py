@@ -43,7 +43,7 @@ class SwitchBoard:
     def _get_pin_number(self, index):
         return self._pinList[index]
 
-    def _count():
+    def _count(self):
         return len(self._pinList)
 
     def reset(self):
