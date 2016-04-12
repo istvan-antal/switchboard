@@ -34,13 +34,13 @@ def turn_off(index):
 
 @app.route('/switch/<index>/test')
 @hmac_auth("manage")
-def turn_on(index):
+def test(index):
     board.test_switch(int(index))
     return "ok"
 
 @app.route('/switches/test')
 @hmac_auth("manage")
-def turn_on():
+def test_all():
     board.test_switches()
     return "testing"
 
