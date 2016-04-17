@@ -1,7 +1,10 @@
-import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
+try:
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BOARD)
+except ImportError:
+    import fake_gpio as GPIO
 
 class SwitchBoard:
 
