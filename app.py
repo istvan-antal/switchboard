@@ -10,7 +10,16 @@ with open("config.json") as data_file:
     config = json.load(data_file)
 
 board = SwitchBoard(config['switches'])
-desklamp = DeskLamp(board=board, switchIndex=0)
+if "desklamps" in config:
+    desklamps = []
+    for desklamp_config in config["desklamps"]:
+        desklamps.append(DeskLamp(
+            board=board,
+            switchIndex=desklamp_config["switchIndex"],
+            lat=float(desklamp_config["location"]["lat"]),
+            long=float(desklamp_config["location"]["long"])
+        ))
+
 app = Flask(__name__)
 
 accountmgr = DictAccountBroker(

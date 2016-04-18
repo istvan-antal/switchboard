@@ -2,5 +2,14 @@
     "switches": [3, 5, 7, 11, 13, 15, 16, 18],
     "accounts": {
         "user": { "secret": "please randomly generate me", "rights": ["manage"]}
-    }
+    },
+    "desklamps": [
+        {
+            "switchIndex": 0,
+            "location": {
+                "lat": "51.5074",
+                "long": "0.1278"
+            }
+        }
+    ]
 }

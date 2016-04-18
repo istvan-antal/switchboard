@@ -12,9 +12,9 @@ def run_schedule():
 class DeskLamp(object):
     lamp_count = 0
     t = None
-    def __init__(self, board, switchIndex):
+    def __init__(self, board, switchIndex, lat, long):
         DeskLamp.lamp_count += 1
-        s = sun(lat=51.5074, long=0.1278)
+        s = sun(lat=lat, long=long)
 
         def job():
             current_time = datetime.now().time()
