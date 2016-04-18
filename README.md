@@ -48,6 +48,8 @@ cp config.sample.json config.json
 
 Customize config.json with your own values!
 
+If you do not wish to use SSL, remove the "flask" key from the file.
+
 ## Client
 
 ```bash

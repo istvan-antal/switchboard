@@ -11,5 +11,8 @@
                 "long": "0.1278"
             }
         }
-    ]
+    ],
+    "flask": {
+        "ssl_context": ["switchboard.crt", "switchboard.key"]
+    }
 }
