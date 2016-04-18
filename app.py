@@ -65,4 +65,17 @@ def off_all():
 
 if __name__ == "__main__":
     context = ('switchboard.crt', 'switchboard.key')
-    app.run(debug=True, ssl_context=context, host='0.0.0.0')
+    flask_config = {}
+
+    if "flask" in config:
+        flask_config = config["flask"]
+        if "ssl_context" in flask_config:
+            flask_config["ssl_context"] = (flask_config["ssl_context"][0], flask_config["ssl_context"][1])
+
+    if "host" not in flask_config:
+        flask_config["host"] = '0.0.0.0'
+
+    if "debug" not in flask_config:
+        flask_config["debug"] = True
+
+    app.run(**flask_config)
