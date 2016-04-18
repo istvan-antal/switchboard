@@ -1,6 +1,7 @@
 #!/usr/bin/python
-from flask import Flask, jsonify
-from flask.ext.hmacauth import hmac_auth, DictAccountBroker, HmacManager
+from flask import Flask, abort, request, jsonify
+from flask.ext.hmacauth import DictAccountBroker, HmacManager
+from functools import update_wrapper
 
 from switchboard import SwitchBoard
 import json
@@ -27,6 +28,19 @@ accountmgr = DictAccountBroker(
     accounts=config['accounts'])
 
 hmacmgr = HmacManager(accountmgr, app)
+
+def hmac_auth(rights=None):
+    def decorator(f):
+        def wrapped_function(*args, **kwargs):
+            if app.hmac_manager.is_authorized(request, rights):
+                return f(*args, **kwargs)
+            else:
+                # TODO: make this custom,
+                # maybe a current_app.hmac_manager.error() call?
+                app.logger.info("hmac_auth failure")
+                abort(403)
+        return update_wrapper(wrapped_function, f)
+    return decorator
 
 @app.route("/")
 def home():
