@@ -9,7 +9,7 @@ import argparse
 class Client(object):
     def __init__(self, config):
         self._config = config
-        if "id" not in config
+        if "id" not in config:
             self._config["id"] = "user"
 
     def get(self, path):
