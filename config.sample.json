@@ -1,0 +1,6 @@
+{
+    "pins": [3, 5, 7, 11, 13, 15, 16, 18],
+    "accounts": {
+        "user": { "secret": "please randomly generate me", "rights": ["manage"]}
+    }
+}

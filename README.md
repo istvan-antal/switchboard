@@ -34,3 +34,21 @@ This application will use BOARD numbering instead of BCM.
 http://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering
 
 Multimeter to test the connections: https://www.amazon.co.uk/gp/product/B00EYYJRC0/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1
+
+# Configuration
+
+## Server
+
+```bash
+cp config.sample.json config.json
+```
+
+Customize config.json with your own values!
+
+## Client
+
+```bash
+cp client.sample.json client.json
+```
+
+Customize client.json with your own values!

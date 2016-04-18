@@ -1,0 +1,5 @@
+{
+    "host": "http://localhost:5000",
+    "id": "user",
+    "secret": "please randomly generate me"
+}
