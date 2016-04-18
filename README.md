@@ -60,6 +60,8 @@ Customize client.json with your own values!
 
 ## SSL(Self-Signed Certificate)
 
+If you will be the only person controlling the device, using your own self-signed certificate is an option.
+
 ```bash
 openssl req -newkey rsa:2048 -nodes -keyout switchboard.key -x509 -days 3650 -out switchboard.crt -subj /CN=localhost
 ```
