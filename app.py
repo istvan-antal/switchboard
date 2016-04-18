@@ -4,11 +4,13 @@ from flask.ext.hmacauth import hmac_auth, DictAccountBroker, HmacManager
 
 from switchboard import SwitchBoard
 import json
+from desklamp import DeskLamp
 
 with open("config.json") as data_file:
     config = json.load(data_file)
 
 board = SwitchBoard(config['pins'])
+desklamp = DeskLamp(board=board, pinIndex=0)
 app = Flask(__name__)
 
 accountmgr = DictAccountBroker(

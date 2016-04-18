@@ -54,5 +54,4 @@ class SwitchBoard:
         GPIO.output(self._pinList, GPIO.HIGH)
 
     def __del__(self):
-        print "cleanup"
         GPIO.cleanup()

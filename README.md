@@ -6,6 +6,7 @@
 sudo apt-get install python-dev
 sudo pip install Flask
 sudo pip install flask-hmacauth
+sudo pip install schedule
 ```
 
 ## Components
