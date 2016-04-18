@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 from flask import Flask, jsonify
 from flask.ext.hmacauth import DictAccountBroker, HmacManager
 from hmac_auth import hmac_auth
