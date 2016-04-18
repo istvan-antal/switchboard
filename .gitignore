@@ -1,5 +1,7 @@
 /config.json
 /client.json
+/switchboard.key
+/switchboard.crt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

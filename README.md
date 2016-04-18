@@ -55,3 +55,11 @@ cp client.sample.json client.json
 ```
 
 Customize client.json with your own values!
+
+## SSL(Self-Signed Certificate)
+
+```bash
+openssl req -newkey rsa:2048 -nodes -keyout switchboard.key -x509 -days 3650 -out switchboard.crt -subj /CN=localhost
+```
+
+Replace *localhost* with the host your device's actual host/ip address.

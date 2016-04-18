@@ -1,10 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import requests
 import time
 import hmac
 import hashlib
 import json
 import argparse
+
+import requests.packages.urllib3
+requests.packages.urllib3.disable_warnings()
 
 class Client(object):
     def __init__(self, config):
@@ -16,7 +19,7 @@ class Client(object):
         path_and_query = "/" + path + "?TIMESTAMP=" + str(int(time.time())) + "&ACCOUNT_ID=" + self._config['id']
         host = self._config['host']
         sig=hmac.new(str(self._config['secret']), msg=path_and_query, digestmod=hashlib.sha1).hexdigest()
-        return requests.get(host+path_and_query, headers={'X-Auth-Signature': sig})
+        return requests.get(host+path_and_query, headers={'X-Auth-Signature': sig}, verify='switchboard.crt')
 
 if __name__ == "__main__":
     with open("client.json") as data_file:

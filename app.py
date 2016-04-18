@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 from flask import Flask, jsonify
 from flask.ext.hmacauth import DictAccountBroker, HmacManager
 from hmac_auth import hmac_auth
@@ -64,4 +64,5 @@ def off_all():
     return "off"
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    context = ('switchboard.crt', 'switchboard.key')
+    app.run(debug=True, ssl_context=context, host='0.0.0.0')
