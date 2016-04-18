@@ -3,8 +3,8 @@ from flask import Flask, jsonify
 from flask.ext.hmacauth import DictAccountBroker, HmacManager
 from hmac_auth import hmac_auth
 
-from switchboard import SwitchBoard
 import json
+from switchboard import SwitchBoard
 from desklamp import DeskLamp
 
 with open("config.json") as data_file:
