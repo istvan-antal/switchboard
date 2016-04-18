@@ -80,6 +80,10 @@ openssl req -newkey rsa:2048 -nodes -keyout switchboard.key -x509 -days 3650 -ou
 
 Replace *localhost* with the host your device's actual host/ip address.
 
+## HTTPS (Let's Encrypt)
+
+Free trusted certificates can be acquired from Let's Encrypt https://letsencrypt.org/.
+
 ## Client
 
 ```bash
@@ -91,7 +95,3 @@ Customize client.json with your own values!
 ## HTTPS (Self-Signed Certificate)
 
 Copy the private-public keypair into a place where the client can access it.
-
-## HTTPS (Let's Encrypt)
-
-Free trusted certificates can be aquired from Let's Encrypt https://letsencrypt.org/.
