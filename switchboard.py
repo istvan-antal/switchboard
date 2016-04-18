@@ -50,6 +50,7 @@ class SwitchBoard:
         return len(self._pinList)
 
     def reset(self):
+        # TODO: add GPIO.gpio_function checks
         GPIO.setup(self._pinList, GPIO.OUT)
         GPIO.output(self._pinList, GPIO.HIGH)
 
