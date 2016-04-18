@@ -9,3 +9,4 @@ def output(*arg):
 
 OUT = 'GPIO.OUT'
 HIGH = 'GPIO.HIGH'
+LOW = 'GPIO.LOW'
