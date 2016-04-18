@@ -2,7 +2,7 @@ import schedule
 import time
 from threading import Thread
 from sunrise import sun
-from datetime import datetime
+from datetime import datetime, date
 
 def run_schedule():
     while DeskLamp.lamp_count > 0:
@@ -18,6 +18,13 @@ class DeskLamp(object):
 
         def job():
             current_time = datetime.now().time()
+            wake_up_time = datetime.now().time()
+            wake_up_time = wake_up_time.replace(6, 30, 0)
+
+            if current_time < wake_up_time:
+                print "We are before wakeup time, lamp off"
+                board.turn_off(switchIndex)
+                return
 
             if current_time < s.sunrise() or current_time > s.sunset():
                 print "Time to swich on the lamp"
@@ -27,14 +34,18 @@ class DeskLamp(object):
             noon_time = s.solarnoon()
             if current_time > noon_time:
                 print "Let's wait till sunset before we switch on the lamp"
-                time.sleep(int(noon_time - current_time) + 1)
+                delta = datetime.combine(date.today(), s.sunset()) - datetime.combine(date.today(), current_time)
+                time.sleep(delta.total_seconds() + 1)
                 return job()
 
             print "Sun is up, lamp should be off"
             board.turn_off(switchIndex)
 
-        schedule.every().day.at("19:00").do(job)
         schedule.every().day.at("6:30").do(job)
+        schedule.every().day.at("9:00").do(job)
+        schedule.every().day.at("19:00").do(job)
+        schedule.every().day.at("00:01").do(job)
+        job()
 
         if DeskLamp.t is None:
             t = Thread(target=run_schedule)
