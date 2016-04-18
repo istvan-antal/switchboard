@@ -34,7 +34,7 @@ class DeskLamp(object):
             print "Lamp time"
             board.turn_on(switchIndex)
 
-        schedule.every().hour.do(job)
+        schedule.every(10).minutes.do(job)
         job()
 
         if DeskLamp.t is None:
