@@ -12,7 +12,7 @@ def run_schedule():
 class DeskLamp(object):
     lamp_count = 0
     t = None
-    def __init__(self, board, pinIndex):
+    def __init__(self, board, switchIndex):
         DeskLamp.lamp_count += 1
         s = sun(lat=51.5074, long=0.1278)
 
@@ -21,7 +21,7 @@ class DeskLamp(object):
 
             if current_time < s.sunrise() or current_time > s.sunset():
                 print "Time to swich on the lamp"
-                board.turn_on(pinIndex)
+                board.turn_on(switchIndex)
                 return
 
             noon_time = s.solarnoon()
@@ -31,7 +31,7 @@ class DeskLamp(object):
                 return job()
 
             print "Sun is up, lamp should be off"
-            board.turn_off(pinIndex)
+            board.turn_off(switchIndex)
 
         schedule.every().day.at("12:03").do(job)
         schedule.every().day.at("19:00").do(job)

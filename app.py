@@ -9,8 +9,8 @@ from desklamp import DeskLamp
 with open("config.json") as data_file:
     config = json.load(data_file)
 
-board = SwitchBoard(config['pins'])
-desklamp = DeskLamp(board=board, pinIndex=0)
+board = SwitchBoard(config['switches'])
+desklamp = DeskLamp(board=board, switchIndex=0)
 app = Flask(__name__)
 
 accountmgr = DictAccountBroker(
