@@ -20,14 +20,15 @@ class DeskLamp(object):
             current_time = datetime.now().time()
             wake_up_time = datetime.now().time()
             wake_up_time = wake_up_time.replace(6, 30, 0)
+            sleep_time = wake_up_time.replace(11, 30, 0)
 
             if s.sunrise() < current_time and current_time < s.sunset():
                 print "Sun is up, lamp should be off"
                 board.turn_off(switchIndex)
                 return
 
-            if current_time < wake_up_time:
-                print "Time to swich on the lamp"
+            if current_time < wake_up_time or current_time > sleep_time:
+                print "Time to swich off the lamp"
                 board.turn_off(switchIndex)
                 return
 
