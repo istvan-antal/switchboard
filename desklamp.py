@@ -33,7 +33,6 @@ class DeskLamp(object):
             print "Sun is up, lamp should be off"
             board.turn_off(switchIndex)
 
-        schedule.every().day.at("12:03").do(job)
         schedule.every().day.at("19:00").do(job)
         schedule.every().day.at("6:30").do(job)
 
