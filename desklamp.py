@@ -16,7 +16,7 @@ class DeskLamp(object):
         DeskLamp.lamp_count += 1
         s = sun(lat=lat, long=long)
 
-        def job(isInitial=False):
+        def job():
             current_time = datetime.now().time()
             wake_up_time = datetime.now().time()
             wake_up_time = wake_up_time.replace(6, 30, 0)
