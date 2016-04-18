@@ -1,5 +1,7 @@
 # Switchboard
 
+Home automation framework for the Raspberry Pie.
+
 ## Software requirements
 
 ```bash
