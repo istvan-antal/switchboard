@@ -60,10 +60,14 @@ Customize client.json with your own values!
 
 ## SSL(Self-Signed Certificate)
 
-If you will be the only person controlling the device, using your own self-signed certificate is an option.
+If you will be the only person controlling the device, using your own self-signed certificate is an option, however it also means that your clients will have to bundle your certificates.
 
 ```bash
 openssl req -newkey rsa:2048 -nodes -keyout switchboard.key -x509 -days 3650 -out switchboard.crt -subj /CN=localhost
 ```
 
 Replace *localhost* with the host your device's actual host/ip address.
+
+## SSL (Let's Encrypt)
+
+Free trusted certificates can be aquired from Let's Encrypt https://letsencrypt.org/.
