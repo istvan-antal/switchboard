@@ -1,12 +1,11 @@
 #!/usr/bin/python
-from flask import Flask, abort, request, jsonify
+from flask import Flask, jsonify
 from flask.ext.hmacauth import DictAccountBroker, HmacManager
-from functools import update_wrapper
+from hmac_auth import hmac_auth
 
 from switchboard import SwitchBoard
 import json
 import time
-import datetime
 from desklamp import DeskLamp
 
 with open("config.json") as data_file:
@@ -29,34 +28,6 @@ accountmgr = DictAccountBroker(
     accounts=config['accounts'])
 
 hmacmgr = HmacManager(accountmgr, app)
-
-def hmac_auth(rights=None):
-    def decorator(f):
-        def wrapped_function(*args, **kwargs):
-            try:
-                timestamp = request.values.get('TIMESTAMP')
-                assert timestamp is not None
-            except:
-                app.logger.info("hmac_auth failure - no timestamp supplied")
-                abort(403)
-
-            ts = datetime.datetime.fromtimestamp(float(timestamp))
-
-            #  is the timestamp valid?
-            if ts < datetime.datetime.now()-datetime.timedelta(seconds=5) \
-                    or ts > datetime.datetime.now():
-                app.logger.info("hmac_auth failure - invalid timestamp")
-                abort(403)
-
-            if app.hmac_manager.is_authorized(request, rights):
-                return f(*args, **kwargs)
-            else:
-                # TODO: make this custom,
-                # maybe a current_app.hmac_manager.error() call?
-                app.logger.info("hmac_auth failure - invalid credentials")
-                abort(403)
-        return update_wrapper(wrapped_function, f)
-    return decorator
 
 @app.route("/")
 def home():
