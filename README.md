@@ -38,6 +38,26 @@ http://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-betw
 
 Multimeter to test the connections: https://www.amazon.co.uk/gp/product/B00EYYJRC0/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1
 
+# Security
+
+## HMAC
+
+An HMAC signature proves that the message came from the stated sender and it has not been tampered with.
+
+HMAC is a signature not an encryption, if it's being sent through an unencrypted channel(HTTP) eavesdroppers can still see what's being sent.
+
+To prevent our message from being eavesdropped, an encrypted channel like SSL(HTTPS) is required.
+
+see:
+https://en.wikipedia.org/wiki/Message_authentication_code
+https://en.wikipedia.org/wiki/Hash-based_message_authentication_code#Design_principles
+
+## SSL/HTTPS
+
+Having the API server use HTTPS(HTTP over SSL) ensures that our API calls cannot be eavesdropped on.
+
+see: https://en.wikipedia.org/wiki/HTTPS
+
 # Configuration
 
 ## Server
