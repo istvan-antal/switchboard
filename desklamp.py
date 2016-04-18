@@ -43,3 +43,14 @@ class DeskLamp(object):
 
     def __del__(self):
         DeskLamp.lamp_count -= 1
+
+desklamps = []
+
+def load(board, desklamp_configs):
+    for desklamp_config in desklamp_configs:
+        desklamps.append(DeskLamp(
+            board=board,
+            switchIndex=desklamp_config["switchIndex"],
+            lat=float(desklamp_config["location"]["lat"]),
+            long=float(desklamp_config["location"]["long"])
+        ))

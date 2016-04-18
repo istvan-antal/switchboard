@@ -3,23 +3,16 @@ from flask import Flask, jsonify
 from flask.ext.hmacauth import DictAccountBroker, HmacManager
 from hmac_auth import hmac_auth
 
-import json
 from switchboard import SwitchBoard
-from desklamp import DeskLamp
+import json
+import desklamp
 
 with open("config.json") as data_file:
     config = json.load(data_file)
 
 board = SwitchBoard(config['switches'])
 if "desklamps" in config:
-    desklamps = []
-    for desklamp_config in config["desklamps"]:
-        desklamps.append(DeskLamp(
-            board=board,
-            switchIndex=desklamp_config["switchIndex"],
-            lat=float(desklamp_config["location"]["lat"]),
-            long=float(desklamp_config["location"]["long"])
-        ))
+    desklamp.load(board, config["desklamps"])
 
 app = Flask(__name__)
 
