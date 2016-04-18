@@ -70,6 +70,16 @@ Customize config.json with your own values!
 
 If you do not wish to use SSL, remove the "flask" key from the file.
 
+## HTTPS (Self-Signed Certificate)
+
+If you will be the only person controlling the device, using your own self-signed certificate is an option, however it also means that your clients will have to bundle your certificates.
+
+```bash
+openssl req -newkey rsa:2048 -nodes -keyout switchboard.key -x509 -days 3650 -out switchboard.crt -subj /CN=localhost
+```
+
+Replace *localhost* with the host your device's actual host/ip address.
+
 ## Client
 
 ```bash
@@ -80,13 +90,7 @@ Customize client.json with your own values!
 
 ## HTTPS (Self-Signed Certificate)
 
-If you will be the only person controlling the device, using your own self-signed certificate is an option, however it also means that your clients will have to bundle your certificates.
-
-```bash
-openssl req -newkey rsa:2048 -nodes -keyout switchboard.key -x509 -days 3650 -out switchboard.crt -subj /CN=localhost
-```
-
-Replace *localhost* with the host your device's actual host/ip address.
+Copy the private-public keypair into a place where the client can access it.
 
 ## HTTPS (Let's Encrypt)
 
