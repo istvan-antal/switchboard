@@ -1,9 +1,10 @@
 #!/usr/bin/python
-from flask import Flask
+from flask import Flask, jsonify
 from flask.ext.hmacauth import hmac_auth, DictAccountBroker, HmacManager
 
 from switchboard import SwitchBoard
 import json
+import time
 from desklamp import DeskLamp
 
 with open("config.json") as data_file:
@@ -29,7 +30,10 @@ hmacmgr = HmacManager(accountmgr, app)
 
 @app.route("/")
 def home():
-    return "home"
+    return jsonify({
+        "time": str(int(time.time())),
+        "status": "ok"
+    })
 
 @app.route('/switch/<index>/on')
 @hmac_auth("manage")
