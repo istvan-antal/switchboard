@@ -5,7 +5,6 @@ from hmac_auth import hmac_auth
 
 from switchboard import SwitchBoard
 import json
-import time
 from desklamp import DeskLamp
 
 with open("config.json") as data_file:
@@ -32,7 +31,6 @@ hmacmgr = HmacManager(accountmgr, app)
 @app.route("/")
 def home():
     return jsonify({
-        "time": str(int(time.time())),
         "status": "ok"
     })
 
