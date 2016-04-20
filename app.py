@@ -6,6 +6,7 @@ from hmac_auth import hmac_auth
 from switchboard import SwitchBoard
 import json
 import desklamp
+import pir
 
 with open("config.json") as data_file:
     config = json.load(data_file)
