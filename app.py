@@ -6,16 +6,13 @@ from hmac_auth import hmac_auth
 from switchboard import SwitchBoard
 import json
 import desklamp
-from pir import Sensor
 
 with open("config.json") as data_file:
     config = json.load(data_file)
 
 board = SwitchBoard(config['switches'])
-#if "desklamps" in config:
-#    desklamp.load(board, config["desklamps"])
-
-sensor = Sensor(19, board, 0)
+if "desklamps" in config:
+    desklamp.load(board, config["desklamps"])
 
 app = Flask(__name__)
 
