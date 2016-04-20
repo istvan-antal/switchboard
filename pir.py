@@ -12,8 +12,7 @@ class Sensor:
         def motionSensor(channel):
             if GPIO.input(config["pinNumber"]):     # True = Rising
                 print "Motion detected"
-                if self.on_motion is not None:
-                    self.on_motion()
+                self.on_motion()
 
         # add event listener on pin 21
         GPIO.add_event_detect(config["pinNumber"], GPIO.BOTH, callback=motionSensor, bouncetime=300)
