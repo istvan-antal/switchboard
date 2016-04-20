@@ -8,14 +8,14 @@ import json
 import desklamp
 from pir import Sensor
 
-sensor = Sensor(19, board, 0)
-
 with open("config.json") as data_file:
     config = json.load(data_file)
 
 board = SwitchBoard(config['switches'])
 #if "desklamps" in config:
 #    desklamp.load(board, config["desklamps"])
+
+sensor = Sensor(19, board, 0)
 
 app = Flask(__name__)
 
