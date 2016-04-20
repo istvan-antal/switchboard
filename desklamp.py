@@ -26,7 +26,7 @@ class DeskLamp(object):
                     board.turn_off(switchIndex)
 
             self.sensor = Sensor(sensor)
-            self.on_motion = on_motion
+            self.sensor.on_motion = on_motion
 
         def job():
             current_time = datetime.now().time()
