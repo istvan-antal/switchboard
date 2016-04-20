@@ -32,7 +32,7 @@ class DeskLamp(object):
             current_time = datetime.now().time()
             wake_up_time = datetime.now().time()
             wake_up_time = wake_up_time.replace(6, 30, 0)
-            sleep_time = wake_up_time.replace(23, 30, 0)
+            sleep_time = wake_up_time.replace(23, 59, 0)
 
             if s.sunrise() < current_time and current_time < s.sunset():
                 print "Sun is up, lamp should be off"
