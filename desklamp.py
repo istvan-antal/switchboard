@@ -25,7 +25,7 @@ class DeskLamp(object):
                 else:
                     board.turn_off(switchIndex)
 
-            self.sensor = Sensor()
+            self.sensor = Sensor(sensor)
             self.on_motion = on_motion
 
         def job():
