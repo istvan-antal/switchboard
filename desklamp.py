@@ -18,12 +18,10 @@ class DeskLamp(object):
         s = sun(lat=lat, long=long)
         self.lamp_should_be_on = False
         self.sensor = None
+        self.last_motion_time = int(0);
         if sensor is not None:
             def on_motion():
-                if self.lamp_should_be_on:
-                    board.turn_on(switchIndex)
-                else:
-                    board.turn_off(switchIndex)
+                self.last_motion_time = int(time.time());
 
             self.sensor = Sensor(sensor)
             self.sensor.on_motion = on_motion
@@ -48,10 +46,13 @@ class DeskLamp(object):
 
             print "Lamp time"
             self.lamp_should_be_on = True
-            if self.sensor is None:
+            now = int(time.time());
+            if now - self.last_motion_time < 300:
                 board.turn_on(switchIndex)
+            else:
+                board.turn_off(switchIndex)
 
-        schedule.every(10).minutes.do(job)
+        schedule.every(1).minutes.do(job)
         job()
 
         if DeskLamp.t is None:
