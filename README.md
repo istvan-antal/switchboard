@@ -32,6 +32,8 @@ http://i.stack.imgur.com/sVvsB.jpg
 
 http://pinout.xyz/pinout/ground
 
+https://learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf
+
 This application will use BOARD numbering instead of BCM.
 
 http://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering
