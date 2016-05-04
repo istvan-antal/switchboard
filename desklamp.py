@@ -17,9 +17,10 @@ class DeskLamp(object):
         DeskLamp.lamp_count += 1
         self.sun = sun(lat=lat, long=long)
         self.board = board
+        self.switchIndex = switchIndex
         self.lamp_should_be_on = False
         self.sensor = None
-        self.last_motion_time = int(0);
+        self.last_motion_time = int(0)
         if sensor is not None:
             self.sensor = Sensor(sensor)
             self.sensor.on_motion = self.on_motion
@@ -41,22 +42,22 @@ class DeskLamp(object):
         if self.sun.sunrise() < current_time and current_time < self.sun.sunset():
             print "Sun is up, lamp should be off"
             self.lamp_should_be_on = False
-            self.board.turn_off(switchIndex)
+            self.board.turn_off(self.switchIndex)
             return
 
         if current_time < wake_up_time or current_time > sleep_time:
             print "Time to swich off the lamp"
             self.lamp_should_be_on = False
-            self.board.turn_off(switchIndex)
+            self.board.turn_off(self.switchIndex)
             return
 
         print "Lamp time"
         self.lamp_should_be_on = True
         now = int(time.time());
         if now - self.last_motion_time < 300:
-            self.board.turn_on(switchIndex)
+            self.board.turn_on(self.switchIndex)
         else:
-            self.board.turn_off(switchIndex)
+            self.board.turn_off(self.switchIndex)
 
     def on_motion(self):
         self.last_motion_time = int(time.time());
