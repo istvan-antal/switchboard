@@ -1,4 +1,8 @@
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BOARD)
+except ImportError:
+    import fake_gpio as GPIO
 
 GPIO.setmode(GPIO.BOARD)
 
