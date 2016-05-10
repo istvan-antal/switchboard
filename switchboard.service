@@ -1,0 +1,13 @@
+[Unit]
+Description=Switchboard controller
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/developer/switchboard
+
+ExecStart=/usr/bin/python /home/pi/developer/switchboard/app.py
+
+[Install]
+WantedBy=multi-user.target

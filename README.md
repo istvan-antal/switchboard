@@ -11,6 +11,21 @@ sudo pip install flask-hmacauth
 sudo pip install schedule
 ```
 
+## Setup
+
+```bash
+sudp cp switchboard.service /etc/systemd/system/switchboard.service
+sudo systemctl enable switchboard
+```
+
+## Usage
+
+View logs:
+
+```bash
+sudo journalctl -u switchboard
+```
+
 ## Components
 
  * Raspberry Pie
